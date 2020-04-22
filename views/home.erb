@@ -1,0 +1,51 @@
+<div class="intro">
+  <h4>Who is Siobhan?</h4>
+  <p><em>Siobhan is your personal budget manager. She can track how much you spend each month and show you how much you have left to spend.</em></p>
+</div>
+
+<% if logged_in? %>
+  <% if @initial_budget %>
+    <div class="budget">
+      <h2>Hi <%= @user %> lemme break down this month for you!</h2>
+      <h1>Your monthly budget is: $<%= @initial_budget %> and you have $<%= @remaining %> left</h1>
+      <em>Here is a list of your expenses:</em><br>
+      <ul>
+        <% if @expenses.size > 0 %>
+          <% @expenses.each do |expense| %>
+            <li><%= expense[0] %>: $<%= expense[1] %></li>
+          <% end %>
+        <% else %>
+          <strong>No expenses so far, Siobhan is very pleased with you! :)</strong>
+        <% end %>
+      </ul>
+      
+    </div>
+    <div>
+      <form action="/add/expense" method="get">
+        <button type="submit">Add an expense</button><br><br>
+      </form>
+    </div>
+     <form action="/user/edit/expense" method="get">
+    <button type="submit">Edit or delete an expense</button>
+  </form>
+  <form action="/add/budget" method="get">
+    <button type="submit">Edit your total budget</button>
+  </form>
+  <% else %>
+    <div>
+      <h2>Looks like you haven't set up your budget! Let's fix that by hitting the button below!</h2>
+      <form action="/add/budget" method="get">
+        <button type="submit">Create Your Budget</button>
+      </form>
+    </div>
+  <% end %>
+ 
+  <form action="/user/signout" method="post">
+    <button type="submit">Sign Out and Lose All Data</button>
+  </form>
+<% else %>
+  <form action="/user" method="get">
+    <button type="submit">Sign In</button>
+  </form>
+  <p><%= @initial_budget %></p>
+<% end %>

@@ -1,0 +1,5 @@
+<form action="/add/budget" method="post">
+  <label for="budget">Type in your budget in USD with dollars and cents (eg. 2.45)</label>
+  <input type="text" id="budget" name="budget" value="<%= @initial_budget || "" %>"><br>
+  <button type="submit">Create Your New Budget!</button>
+</form>

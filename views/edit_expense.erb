@@ -1,0 +1,16 @@
+<h2>Siobhan says to click the appropriate button for the expense you would like to edit.. DONT DISSAPOINT SIOBHAN</h2>
+<h3>Your current expenses:</h3>
+<ul>
+  <% @expenses.each do |expense| %>
+    <li>
+      <strong><%= expense[0] %>: $<%= expense[1] %></strong>
+      <form action="/user/edit/expense/<%= expense[2] %>" method="get">
+        <button type="submit">EDIT</button>
+      </form>
+      <form action="/user/delete/expense/<%= expense[2] %>" method="post">
+        <button type="submit">DELETE</button>
+      </form>
+    </li>
+  <% end %>
+</ul>
+

@@ -1,0 +1,8 @@
+<h2>Siobhan says update your expense! DO NOT LET SIOBHAN DOWN!</h2>
+<form action="/update/expense/<%= @id %>" method="post">
+  <label for="expense_name">Expense Name:</label>
+  <input type="text" id="expense_name" name="expense_name" value="<%= @expense_name %>"><br><br>
+  <label for="expense_amount">Expense Amount in USD with cents (eg. 2.45):</label>
+  <input type="text" id="expense_amount" name="expense_amount" value="<%= params[:epense_amount] || @expense_amount %>"><br><br>
+  <button type="submit"><strong>Update your expense and make Siobhan happy</strong></button>
+</form>

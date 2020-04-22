@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Siobhan</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/stylesheets/siobhan.css">
+  </head>
+  <body>
+    <header>
+      <h1>Siobhan - Your Finance Companion</h1>
+    </header>
+    <% if session[:message] %>
+      <div>
+        <p class="message"><%= session.delete(:message) %></p>
+      </div>
+    <% end %>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <br><br>
+      <form action="/" method="get">
+        <button type="submit"><strong>Let Siobhan take you back to the homepage!</strong></button>
+      </form>
+    </footer>
+  </body>
+</html>
